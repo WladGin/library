@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::apiResource('books', \App\Http\Api\Controllers\BookController::class);
+
+Route::bind('book', function ($value) {
+    return \App\Models\Book::with(['authors', 'publishingHouses'])->findOrFail($value);
 });
