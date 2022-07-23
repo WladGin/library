@@ -25,6 +25,6 @@ class BookAuthorSeeder extends Seeder
             ];
         }
 
-        DB::table('book_authors')->insert($bookAuthor);
+        DB::table('author_book')->insert($bookAuthor);
     }
 }
